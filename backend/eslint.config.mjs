@@ -61,12 +61,6 @@ export default [
       '@typescript-eslint/require-await': 'error',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
-      'prettier/prettier': [
-        'error',
-        {
-          endOfLine: 'auto',
-        },
-      ],
     },
   },
 ];

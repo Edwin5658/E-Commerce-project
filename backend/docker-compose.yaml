@@ -1,21 +1,21 @@
 version: '3.9'
 services:
-  app: 
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        HTTP_PROXY: http://192.168.10.138:8080
-        HTTPS_PROXY: http://192.168.10.138:8080
-    container_name: nestjs-postgres
-    env_file:
-      - ./.env.dev
-    ports:
-      - '3000:3000'
-    depends_on:
-      - db
-    volumes:
-      - ./src:/app/src
+  # app: 
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     args:
+  #       HTTP_PROXY: http://192.168.10.138:8080
+  #       HTTPS_PROXY: http://192.168.10.138:8080
+  #   container_name: nestjs-postgres
+  #   env_file:
+  #     - ./.env.dev
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     - db
+  #   volumes:
+  #     - ./src:/app/src
 
   db:
     image: postgres
@@ -38,3 +38,5 @@ services:
       - '5050:80'
     depends_on:
       - db
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
