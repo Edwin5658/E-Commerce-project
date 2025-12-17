@@ -4,11 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: http://192.168.10.138:8080
+        HTTPS_PROXY: http://192.168.10.138:8080
     container_name: nestjs-postgres
     env_file:
-      - ./env/app.env
-    environment:
-      - PORT=${PORT}
+      - ./.env.dev
     ports:
       - '3000:3000'
     depends_on:
@@ -20,26 +21,19 @@ services:
     image: postgres
     restart: always
     env_file:
-      - ./env/db.env
-    environment:
-      POSTGRES_USER: ${DATABASE_USER_NAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+      - ./.env.dev
     container_name: postgres
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql
     ports:
-      - ${DATABASE_PORT}:5432
+      - 5432:5432
   
   pgadmin:
     image: dpage/pgadmin4
     restart: always
     container_name: nest-pgadmin4
     env_file:
-      - ./env/db.env
-    environment:
-      - PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      - ./.env.dev
     ports:
       - '5050:80'
     depends_on:
