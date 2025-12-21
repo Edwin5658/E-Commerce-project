@@ -1,0 +1,64 @@
+model Product {
+    id Int  @id @default(autoincrement())
+    name String
+    description String?
+    price Float
+    stock Int @default(0)
+    image String
+    createdAt DateTime
+    updatedAt DateTime
+    category_id Int 
+    cartItem_id Int @unique
+    category Category @relation(fields: [category_id], references: [id])
+    orderItem OrderItem[]
+    cartItem CartItem @relation(fields: [cartItem_id], references: [id])
+    wishlist Wishlist[]
+
+    @@schema("product")
+}
+
+
+model Category {
+    id Int @id @default(autoincrement())
+    name String
+    createdAt DateTime
+    updatedAt DateTime
+    product Product[]
+    @@schema("product")
+}
+
+model Order {
+    id Int @id @default(autoincrement())    
+    status Status @default(processing)
+    createdAt DateTime
+    updatedAt DateTime
+    total_price Float
+    user_id Int 
+    orderer User @relation(fields: [user_id], references: [id])
+    items OrderItem[]
+
+    @@schema("product")
+}
+
+model OrderItem {
+    id Int @id @default(autoincrement())
+    price Float
+    quantity Int
+    createdAt DateTime
+    updatedAt DateTime
+    product_id Int
+    order_id Int
+    order Order @relation(fields: [order_id], references: [id])
+    product Product @relation(fields: [product_id], references: [id])
+
+    @@schema("product")
+}
+
+enum Status {
+  processing
+  shipped
+  delivered
+  cancelled
+
+  @@schema("product")
+}
