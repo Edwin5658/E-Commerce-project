@@ -11,8 +11,7 @@ model Product {
 
     category_id Int
     category    Category @relation(fields: [category_id], references: [id])
-
-    cartItem_id Int        @unique
+    
     cartItem    CartItem[]
 
     orderItem OrderItem[]

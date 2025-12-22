@@ -1,6 +1,5 @@
 model Order {
     id          Int    @id @default(autoincrement())
-    total_price Float
     card_name   String
     card_number String
     address     String
