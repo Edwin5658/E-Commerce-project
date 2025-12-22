@@ -1,9 +1,0 @@
-model Wishlist {
-    id Int @id @default(autoincrement())
-    createdAt DateTime
-    updatedAt DateTime
-    user_id Int @unique
-    user User @relation(fields: [user_id], references: [id])
-    product Product[]
-    @@schema("wishlist")
-}
