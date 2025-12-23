@@ -237,7 +237,7 @@ const main = async () => {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
       price: parseFloat(faker.commerce.price()),
-      stock: faker.number.int({ min: 10, max: 100 }),
+      stock: faker.number.int({ min: 0, max: 100 }),
       image: faker.image.url(),
       category_id: randomCategory.id,
     };

@@ -12,9 +12,12 @@ import { User as UserModel } from '../../generated/prisma/client';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService
+    
+  ) {}
 
-  @Post('/create')
+  @Post('/register')
   async signupUser(
     @Body() userData: { name?: string; email: string },
   ): Promise<UserModel> {
