@@ -210,8 +210,6 @@ const main = async () => {
     return {
       firstName,
       lastName,
-      gender,
-      age: faker.number.int({ min: 18, max: 65 }),
       email: faker.internet.email({ firstName, lastName }).toLowerCase(),
       password: faker.internet.password({ length: 10, memorable: true }),
       role: i === 0 ? Role.ADMIN : Role.USER,

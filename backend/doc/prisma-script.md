@@ -6,3 +6,6 @@ npx prisma migrate dev --name init
 
 // generate Prisma Client
 npx prisma generate
+
+// Prisma seed db
+npx prisma db seed

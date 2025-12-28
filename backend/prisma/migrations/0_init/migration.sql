@@ -46,7 +46,6 @@ CREATE TABLE "cart"."CartItem" (
 -- CreateTable
 CREATE TABLE "order"."Order" (
     "id" SERIAL NOT NULL,
-    "total_price" DOUBLE PRECISION NOT NULL,
     "card_name" TEXT NOT NULL,
     "card_number" TEXT NOT NULL,
     "address" TEXT NOT NULL,
@@ -93,7 +92,6 @@ CREATE TABLE "product"."Product" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "category_id" INTEGER NOT NULL,
-    "cartItem_id" INTEGER NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
@@ -125,8 +123,6 @@ CREATE TABLE "user"."User" (
     "id" SERIAL NOT NULL,
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
-    "gender" TEXT NOT NULL,
-    "age" INTEGER NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" "user"."Role" NOT NULL DEFAULT 'USER',
@@ -164,9 +160,6 @@ CREATE UNIQUE INDEX "CartItem_cart_id_product_id_key" ON "cart"."CartItem"("cart
 
 -- CreateIndex
 CREATE UNIQUE INDEX "OrderLog_order_id_key" ON "order"."OrderLog"("order_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Product_cartItem_id_key" ON "product"."Product"("cartItem_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "user"."User"("email");
@@ -215,3 +208,4 @@ ALTER TABLE "wishlist"."WishlistItem" ADD CONSTRAINT "WishlistItem_wishlist_id_f
 
 -- AddForeignKey
 ALTER TABLE "wishlist"."WishlistItem" ADD CONSTRAINT "WishlistItem_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "product"."Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
