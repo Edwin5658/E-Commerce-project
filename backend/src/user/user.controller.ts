@@ -7,6 +7,8 @@ import {
   Post,
   Put,
   Query,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User as UserModel } from '../../generated/prisma/client';
@@ -20,13 +22,6 @@ export class UserController {
     private readonly userService: UserService
 
   ) { }
-
-  @Post('/register')
-  async signupUser(
-    @Body() createUserDto: CreateUserDto,
-  ): Promise<Omit<UserModel, 'password'>> {
-    return this.userService.createUser(createUserDto);
-  }
 
   @Get('/:id')
   async getUserById(
