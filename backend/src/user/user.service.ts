@@ -1,8 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { User, Prisma } from '../../generated/prisma/client';
-import { CreateUserDto } from './dto/create-user.dto';
-import * as bcrypt from 'bcrypt';
 import { UpdateUserPasswordDto } from './dto/update-password.dto';
 import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
 import { UserWithoutPw } from 'src/common/types';
@@ -11,6 +9,10 @@ import { UserWithoutPw } from 'src/common/types';
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) { }
+
+  async getAllUsers(): Promise<UserWithoutPw[]> {
+    return await this.prisma.user.findMany();
+  }
 
   async getUserById(inputId: number): Promise<UserWithoutPw> {
     const user = await this.prisma.user.findUnique({

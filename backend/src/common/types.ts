@@ -1,3 +1,3 @@
 import { User } from '../../generated/prisma/client';
 
-export type UserWithoutPw = Omit<User, 'password'>
+export type UserWithoutPw = Omit<User, 'password' | 'refreshToken'>

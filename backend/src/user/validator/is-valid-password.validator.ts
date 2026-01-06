@@ -12,11 +12,11 @@ export class IsValidPasswordConstraint implements ValidatorConstraintInterface {
       password.length > 5 &&
       /[A-Z]/.test(password) &&
       /[a-z]/.test(password) &&
-      /[0–9]/.test(password) 
+      /[0-9]/.test(password) 
     );
   }
 
   defaultMessage(args: ValidationArguments) {
-    return 'Password must be longer than 6 characters and include at least one uppercase letter, one lowercase letter and one number';
+    return 'Password must be longer than 5 characters and include at least one uppercase letter, one lowercase letter and one number';
   }
 }

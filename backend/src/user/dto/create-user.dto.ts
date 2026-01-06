@@ -3,11 +3,14 @@ import { Role } from 'generated/prisma/enums';
 import { IsValidPasswordConstraint } from '../validator/is-valid-password.validator';
 
 export class CreateUserDto {
+    // TODO: is unique validator
+    @IsNotEmpty({ message: 'Email is required'})
     @IsEmail(undefined, {
         message: 'Invalid Email'
     })
     email: string;
 
+    @IsNotEmpty()
     @Validate(IsValidPasswordConstraint)
     password: string;
 

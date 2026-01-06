@@ -15,6 +15,7 @@ import { User as UserModel } from '../../generated/prisma/client';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserPasswordDto } from './dto/update-password.dto';
 import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
+import { UserWithoutPw } from 'src/common/types';
 
 @Controller('user')
 export class UserController {
@@ -23,31 +24,36 @@ export class UserController {
 
   ) { }
 
+  @Get('/users')
+  async getAllUsers(): Promise<UserWithoutPw[]> {
+    return this.userService.getAllUsers();
+  }
+
   @Get('/:id')
   async getUserById(
     @Param('id') userId: number
-  ): Promise<Omit<UserModel, 'password'>> {
+  ): Promise<UserWithoutPw> {
     return this.userService.getUserById(userId);
   }
   
   @Get()
   async getUserByEmail(
     @Query('email') email: string
-  ): Promise<Omit<UserModel, 'password'>> {
+  ): Promise<UserWithoutPw> {
     return this.userService.getUserByEmail(email);
   }
 
   @Put()
   async updateUserPassword(
     @Body() updateUserPasswordDto: UpdateUserPasswordDto
-  ): Promise<Omit<UserModel, 'password'>> {
+  ): Promise<UserWithoutPw> {
     return this.userService.updateUserPassword(updateUserPasswordDto);
   }
 
   @Put()
   async updateUserProfile(
     @Body() updateUserProfileDto: UpdateUserProfileDto
-  ): Promise<Omit<UserModel, 'password'>> {
+  ): Promise<UserWithoutPw> {
     return this.userService.updateUserProfile(updateUserProfileDto);
   }
 }
