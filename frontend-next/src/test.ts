@@ -1,7 +1,7 @@
-        var a = 20;
+const a = 20;
 
-    const b = 'a'
+const b = 'a';
 let c;
 const e = c;
 const f = e;
-    export default a + b;
+export default a + b;
