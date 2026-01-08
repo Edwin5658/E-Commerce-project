@@ -2,5 +2,6 @@
 
     const b = 'a'
 let c;
+let d;
 
     export default a + b;
