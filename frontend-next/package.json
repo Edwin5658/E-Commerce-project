@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format": "prettier --write",
     "prepare": "cd .. && husky frontend-next/.husky"
   },
   "lint-staged": {
@@ -16,7 +16,7 @@
       "prettier --write"
     ],
     "src/**/*.{ts,tsx}": [
-      "eslint . --fix"
+      "eslint --fix"
     ]
   },
   "dependencies": {
@@ -34,7 +34,8 @@
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }

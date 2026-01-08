@@ -1,5 +1,5 @@
 # 1. Go into the frontend directory
-# cd frontend-next
+cd frontend-next
 
 # 2. Run the command 
-# npx lint-staged
+npx lint-staged
