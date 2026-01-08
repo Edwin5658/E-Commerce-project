@@ -9,15 +9,15 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
-    "prepare": "husky",
-    "lint-staged": {
-      "**/*.{ts,tsx,css,html,json,md}": [
-        "prettier --write"
-      ],
-      "**/*.{ts,tsx}": [
-        "eslint --fix"
-      ]
-    }
+    "prepare": "cd .. && husky frontend-next/.husky"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,css,html,json,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint . --fix"
+    ]
   },
   "dependencies": {
     "next": "16.1.1",
