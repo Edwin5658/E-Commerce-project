@@ -6,15 +6,27 @@
     "useDefineForClassFields": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "allowJs": false,
+    "baseUrl": "src/",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
 
     /* Bundler mode */
+
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
-
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -24,11 +36,18 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "verbatimModuleSyntax": true,
-    "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
+    "noUncheckedSideEffectImports": true,
     "noUncheckedIndexedAccess": true,
-    
+
   },
-  "include": ["src"],
-  
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
 }
